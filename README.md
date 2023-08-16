@@ -36,7 +36,7 @@ We hope this code will be useful for calculating the efficiency limits under oth
   - To minimize the amount of code to edit, define your material name with the variable Material_Name in Line 38 (this will be used for the plots); then, put your n and k data files in the folder "Data/Material/[Material_Name]" (without the square brackets) and name them "[Material_Name]-n.txt" and "[Material_Name]-k.txt", respectively. See how it is done for the example data (MoS<sub>2</sub>, MoSe<sub>2</sub>, WS<sub>2</sub>, and WSe<sub>2</sub>), which is in the repository.
   - Note: Make sure that your k data is defined for all **wavelengths** of your spectrum. If your k data is defined for energy (such as eV or J), use Planck's equation (λ = hc / E) to convert energy into wavelength. For AM 1.5 G, this means having k data for all wavelengths between 280 nm and 4000 nm, but for other spectra, this can be redefined in Lines 78 - 79. This may mean that you will have to extrapolate some of your k data. Make sure that your n data is defined at the band gap energy of your material, converted to wavelength. Also, make sure your n data is defined in terms of wavelengths, not energy.
   - Define the recombination parameters in Lines 91 - 93.
-    - If you use more than eight 𝜏<sub>SRH</sub> values, you will need to add more colors to the `Colors~ variable in Lines 97 - 99.
+    - If you use more than eight 𝜏<sub>SRH</sub> values, you will need to add more colors to the `Colors` variable in Lines 97 - 99.
 
 ### For Other Spectra
 - Define the spectrum in Lines 72 - 74.
