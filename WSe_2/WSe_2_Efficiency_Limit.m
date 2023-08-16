@@ -90,7 +90,7 @@ Spectrum = interp1(Spectrum_Data(:, 1:1), Spectrum_Data(:, 3:3), ...
 % Define recombination parameters
 Material_Alpha1 = 0; % Free Carrier Absorption coefficient; units: nm ^ -1
 Material_C = 10 ^ -29.73; % Auger coefficient; units: cm ^ 6 * s ^ -1
-SRH_tau_range = [Inf 1e-6 611e-9 144e-9 1e-7 1e-8]; % units: s
+SRH_tau_range = [1e-3 1e-4 1e-5 1e-6 1e-7 1e-8 1e-9]; % units: s
 
 % Supports up to eight tau_SRH values; if you would like to use more,
 % add more colors to this matrix
@@ -100,8 +100,8 @@ Colors = [[0.5 0 0]; [0.64 0.08 0.18]; [0.85 0.33 0.10];
 
 % Define thickness range and specific thicknesses of interest to generate
 % JV curves and spectral dependencies of the luminescent emission rate
-L_Range = linspace(1, 27, 27).'; % units: nm
-L_Interest = [26]; % units: nm (put in ascending order)
+L_Range = linspace(1, 1001, 1001).'; % units: nm
+L_Interest = [100 1000]; % units: nm (put in ascending order)
 for i = 1:length(L_Interest)
     assert(ismember(L_Interest(i), L_Range), ...
         'Your thickness of interest is not defined in your thickness range.');
