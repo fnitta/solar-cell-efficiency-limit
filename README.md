@@ -18,8 +18,8 @@ All of the data needed to reproduce the results in our paper is in the repositor
   - Range of thicknesses defined in Line 103. Thickness(es) to generate IV curves for are defined in Line 104 (note: make sure that the thicknesses are in ascending order, and are in the range of thicknesses).
 
 1. Efficiency Limits via Shockley-Queisser (SQ) Model
-   - Calculates the efficiency limit from the SQ model for comparison.
-   - Exports current density-voltage (J-V) characteristics and key photovoltaic parameters: open-circuit voltage (Voc), short-circuit current (Jsc), fill factor (FF), and power conversion efficiency (eff).
+  - Calculates the efficiency limit from the SQ model for comparison.
+  - Exports current density-voltage (J-V) characteristics and key photovoltaic parameters: open-circuit voltage (V<sub>oc</sub>), short-circuit current (J<sub>sc</sub>), fill factor (FF), and power conversion efficiency (eff).
 
 2. Efficiency Limits via Extended Tiedje-Yablonovitch (TY) Model
   - Derives Voc, Jsc, FF, & eff for a spectrum of thicknesses.
@@ -45,9 +45,6 @@ All of the data needed to reproduce the results in our paper is in the repositor
   - This section performs calculations to determine Voc, Jsc, FF, and eff for a range of thicknesses (with the L_Range variable in Line 103) with our extended Tiedje-Yablonovitch (TY) model, which includes Auger recombination and defect-assisted Shockley-Reed-Hall (SRH) recombination. It employs Equation 11 in Supplementary Note 1 to generate J-V characteristics, and from that, extracts Voc, Jsc, FF, and eff. While it saves these parameters at all thicknesses, it only saves the J-V data for thicknesses of interests (with the L_Interest variable in Line 104). If any thickness in L_Interest is not part of the L_Range list, the code will not run.
   - This section also analyzes the magnitude of each recombination mechanism. It exports the magnitude of the recombination in units of mA cm<sup>-2</sup>, as well as all of the lifetimes for each recombination mechanism in units of seconds.
   - The data tables that are exported for the photovoltaic parameters and recombination loss mechanism magnitude and lifetimes have number of rows corresponding to the number of thicknesses, and number of columns corresponding to the number of 𝜏_SRH values (and in the order of the 𝜏<sub>SRH</sub> values defined in the variable SRH_tau_range). For the J-V data, the first half of the columns correspond to voltages for each 𝜏_SRH value (and in the order of the 𝜏<sub>SRH</sub> values defined in the variable `SRH_tau_range`); the second half of the columns correspond to current densities. The data is exported in Lines 414 - 430.
-
-3. Data Visualization
-- The last section is short, and is used to visualize the computed parameters. Data plots are generated for each parameter against the thickness of the material. Each parameter plot is saved in both .fig and .jpg formats for convenience, and the plots are color-coded to distinguish between different parameters.
 
 ## Calculating the Efficiency Limits Under Other Conditions
 We hope this code will be useful for calculating the efficiency limits under other conditions. Here is how you can modify the code to calculate the efficiency limits for other materials of interest and for other spectra.
