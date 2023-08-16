@@ -1,5 +1,5 @@
 # Efficiency Limit of Solar Cells
-This repository contains MATLAB code to calculate the fundamental performance limits of single-junction solar cells with a realistic analysis based on the Tiedje-Yablonovitch model and including defect-assisted Shockley-Read-Hall (SRH) recombination. It calculates key photovoltaic parameters, such as the open circuit voltage, short circuit current density, fill factor, and power conversion efficiency, and While our work focuses on the efficiency limits of multilayer MoS_2, MoSe_2, WS_2, and WSe_2 solar cells under AM 1.5 G illumination, this code can be used to calculate the efficiency limits of any material under any spectrum.
+This repository contains MATLAB code to calculate the fundamental performance limits of single-junction solar cells with a realistic analysis based on the Tiedje-Yablonovitch model and including defect-assisted Shockley-Read-Hall (SRH) recombination. It calculates key photovoltaic parameters, such as the open circuit voltage, short circuit current density, fill factor, and power conversion efficiency, and While our work focuses on the efficiency limits of multilayer MoS<sub>2</sub>, MoSe<sub>2</sub>, WS<sub>2</sub>, and WSe<sub>2</sub> solar cells under AM 1.5 G illumination, this code can be used to calculate the efficiency limits of any material under any spectrum.
 
 This MATLAB script models the efficiency limit of single-junction solar cells as a function of the absorber layer's thickness. It calculates key photovoltaic parameters, such as the open circuit voltage, short circuit current density, fill factor, and power conversion efficiency, based on the Shockley-Queisser limit. The script also allows for visual representation of these parameters through plots to better understand the efficiency trends with varying thicknesses.
 
@@ -8,7 +8,31 @@ This README serves two purposes:
 2. It guides users on the necessary modifications and data files required to calculate the efficiency limits of (a) their materials of interest and/or (b) under other spectra.
 
 ## Overview of the MATLAB Code
-The script is divided into four main parts:
+All of the data needed to reproduce the results in our paper is in the repository. The script is divided into four main parts:
+
+0. Parameter Initialization and Directory Setup
+  - Defines directory paths to store output data and figures.
+  - Initializes electrical parameters (band gap, effective electron mass, and effective hole mass) in Lines 41 - 43, and optical constants (n & k) in Lines 55 - 59.
+  - Spectrum (in our case, AM 1.5 G illumination) defined in Lines 72 - 74.
+  - Recombination parameters defined in Lines 91 - 93.
+  - Range of thicknesses defined in Line 103. Thickness(es) to generate IV curves for are defined in Line 104 (note: make sure that the thicknesses are in ascending order, and are in the range of thicknesses).
+
+1. Efficiency Limits via Shockley-Queisser (SQ) Model
+   - Calculates the efficiency limit from the SQ model for comparison.
+   - Exports current density-voltage (J-V) characteristics and key photovoltaic parameters: open-circuit voltage (Voc), short-circuit current (Jsc), fill factor (FF), and power conversion efficiency (eff).
+
+2. Efficiency Limits via Extended Tiedje-Yablonovitch (TY) Model
+  - Derives Voc, Jsc, FF, & eff for a spectrum of thicknesses.
+  - Uses Equation 11 from Supplementary Note 1 to curate J-V characteristics, and sequentially extracts essential parameters.
+  - A detailed analysis of recombination magnitude is conducted. Data includes recombination units and recombination mechanism lifetimes.
+
+3. Data Visualization
+  - Data plots for each parameter versus material thickness.
+  - Parameters saved in both .fig and .jpg formats, with a distinct color-coding scheme for clear differentiation.
+
+
+
+
 
 0. Parameter Initialization and Directory Setup
   - Here, the script sets up directory paths for storing output data and figures and initializes various parameters. The code stores the calculated parameters in .txt format, and the plots in both .fig and .jpg format. For the modeling parameters, see Table I: this includes band gap, effective electron mass, and effective hole mass (Lines 41 - 43, respectively). Also, the material's optical constants (n and k) are defined in Lines 55 - 59. To minimize the amount of code to edit, define your material name with the variable Material_Name in Line 38 (this will be used for the plots); then, put your n and k data files in the folder "Data/Material/[Material_Name]" (without the square brackets) and name them "[Material_Name]-n.txt" and "[Material_Name]-k.txt", respectively. See how it is done for the example data (MoS<sub>2</sub>, MoSe<sub>2</sub>, WS<sub>2</sub>, and WSe<sub>2</sub>). Finally, the spectrum (AM 1.5 G illumination in our case) is defined in Lines 72 - 74.
