@@ -11,8 +11,8 @@ All of the data needed to reproduce the results in our paper is in this reposito
 0. Parameter Initialization and Directory Setup
   - Defines directory paths to store output data and figures.
   - Initializes electrical parameters (band gap, effective electron mass, and effective hole mass) in Lines 41 - 43, and optical constants (n and k) in Lines 55 - 59.
-  - Spectrum (in our case, AM 1.5 G illumination) defined in Lines 72 - 74.
-  - Recombination parameters defined in Lines 91 - 93.
+  - Defines spectrum (in our case, AM 1.5 G illumination) in Lines 72 - 74.
+  - Initializes recombination parameters in Lines 91 - 93.
   - Range of thicknesses defined in Line 103. Thickness(es) to generate J-V curves for are defined in Line 104 (note: make sure that the thicknesses are in ascending order, and are in the range of thicknesses).
 
 1. Efficiency Limits via Shockley-Queisser (SQ) Model
