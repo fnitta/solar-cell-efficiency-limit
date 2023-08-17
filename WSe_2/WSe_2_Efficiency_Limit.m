@@ -90,7 +90,7 @@ Spectrum = interp1(Spectrum_Data(:, 1:1), Spectrum_Data(:, 3:3), ...
 % Define recombination parameters
 Material_Alpha1 = 0; % Free Carrier Absorption coefficient; units: nm ^ -1
 Material_C = 10 ^ -29.73; % Auger coefficient; units: cm ^ 6 * s ^ -1
-SRH_tau_range = [1e-3 1e-4 1e-5 1e-6 1e-7 1e-8 1e-9]; % units: s
+SRH_tau_range = [Inf 1e-3 1e-4 1e-5 1e-6 1e-7 1e-8 1e-9]; % units: s
 
 % Supports up to eight tau_SRH values; if you would like to use more,
 % add more colors to this matrix
@@ -458,6 +458,7 @@ for i = 1:length(Text_Filename)
     hTitle = title(strcat(Material_Name, " ", Titles(i), " vs. Thickness"));
     set(gca, 'FontSize', 20);
     set(hTitle, 'FontSize', 32);
+    set(gca, 'XScale', 'log');
     set(gca, 'linewidth', 2);
     xlim([5 1000]);
     set(gcf, 'Units', 'normalized', 'Position', [0 0 1 1]);
