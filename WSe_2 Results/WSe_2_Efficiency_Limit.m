@@ -256,10 +256,9 @@ for thickness_index = 1:length(L_Range)
             Current_Density(fraction_index, tau_index) = f * Jsc(thickness_index, tau_index);
             if f == 1
                 if any(Voltage(:, tau_index) < 0)
-                    Voltage(fraction_index, tau_index) = (Boltzmann_constant * ...
-                        T * X_RadiativeAugerFreeSRH) / (electron_charge);
-                    Jsc(thickness_index, tau_index) = interp1d(Voltage(:, tau_index), ...
-                        Current_Density(:, tau_index), 0);
+                    Voltage(fraction_index, tau_index) = Voltage(fraction_index - 1, tau_index);
+                    Jsc(thickness_index, tau_index) = interp1(Voltage(1:end - 1, tau_index), ...
+                        Current_Density(1:end - 1, tau_index), 0);
                 else
                     Voltage(fraction_index, tau_index) = 0;
                 end
