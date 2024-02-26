@@ -86,6 +86,7 @@ Material_Alpha2 = interp1(New_Wavelength_Range, Material_Alpha2_Original, ...
     New_Wavelength_Range); % no units
 Spectrum = interp1(Spectrum_Data(:, 1:1), Spectrum_Data(:, 3:3), ...
     New_Wavelength_Range); % units: W * m ^ -2 * nm ^ -1
+Total_Intensity = trapz(New_Wavelength_Range, Spectrum) * 10 ^ 3 * 10 ^ -4; % units: mW * cm ^ -2
 
 % Define recombination parameters
 Material_Alpha1 = 0; % Free Carrier Absorption coefficient; units: nm ^ -1
@@ -153,7 +154,7 @@ SQ_Current_Density_new = SQ_Current_Density;
 SQ_Voc = interp1(SQ_Current_Density_new, SQ_Voltage(index), 0); % V
 SQ_FF = abs(min(SQ_Current_Density .* SQ_Voltage)) / abs(SQ_Voc * SQ_Jsc);
 SQ_Pmax = abs(SQ_Jsc * SQ_Voc * SQ_FF); % mW / cm ^ 2
-SQ_eff = SQ_Pmax;
+SQ_eff = SQ_Pmax / Total_Intensity * 100;
 
 % Export the SQ data
 writematrix([SQ_Voltage SQ_Current_Density], strcat(Output_Data_Directory, ...
@@ -282,7 +283,7 @@ for thickness_index = 1:length(L_Range)
                Imax(thickness_index, tau_index) = Current_Density(max_index, tau_index);
            end
         end
-        eff(thickness_index, tau_index) = max(Current_Density(:, tau_index) .* Voltage(:, tau_index)) / (trapz(New_Wavelength_Range, Spectrum) * 10 ^ 3 * 10 ^ -4) * 100;
+        eff(thickness_index, tau_index) = max(Current_Density(:, tau_index) .* Voltage(:, tau_index)) / Total_Intensity * 100;
 
         % units: mA / cm ^ 2
         AugerComponent(thickness_index, tau_index) = electron_charge * L * 10 ^ 3 * 10 ^ -7 * Material_C * Material_ni ^ 3 * ...
