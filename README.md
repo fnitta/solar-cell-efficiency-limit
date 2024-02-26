@@ -43,4 +43,4 @@ We hope this code will be useful for calculating the efficiency limits under oth
   - See the note above for the k data. The spectrum should also be defined for all **wavelengths** rather than energy, and if it's defined for energy, Planck's equation should be used to convert energy into wavelength.
 
 ## Citing Our Work
-If you find this model useful for your research, please cite our paper: K. Nassiri Nazif, F.U. Nitta, A. Daus, K.C. Saraswat, E. Pop, ["Efficiency Limit of Transition Metal Dichalcogenide Solar Cells,"](https://arxiv.org/abs/2307.13166) pre-print arXiv:2307.13166 (2023)
+If you find this model useful for your research, please cite our paper: Nassiri Nazif, K., Nitta, F. U., Daus, A., Saraswat, K. C., & Pop, E. (2023). Efficiency limit of transition metal dichalcogenide solar cells. Communications Physics, 6(1), 367.

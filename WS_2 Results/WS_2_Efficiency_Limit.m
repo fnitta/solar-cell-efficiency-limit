@@ -3,7 +3,7 @@
 % Tiedje-Yablonovitch model and including defect-assisted Shockley-Read-Hall
 % (SRH) recombination.
 %
-% See the paper here: https://arxiv.org/pdf/2307.13166.pdf
+% See the paper here: https://www.nature.com/articles/s42005-023-01447-y
 
 % Reset MATLAB
 clear; close all;
@@ -138,7 +138,7 @@ Material_Spectrum = interp1(New_Wavelength_Range, Spectrum, Material_Wavelength_
 % Calculate light-generated current by integrating the portion of the
 % spectrum that is absorbed
 SQ_L = 10 ^ 3 * 10 ^ -4 * electron_charge * trapz(Material_Wavelength_Domain, ...
-    Material_Spectrum ./ Material_Photon_Energy); % (photon * C) / (nm * m ^ 2) = A / m ^ 2 =
+    Material_Spectrum ./ Material_Photon_Energy); % units: (photon * C) / (nm * m ^ 2) = A / m ^ 2 =
     % 10 ^ 3 * 10 ^ -4 * mA / cm ^ 2
 
 % Find current density from radiative recombination and light-generated
@@ -282,7 +282,7 @@ for thickness_index = 1:length(L_Range)
                Imax(thickness_index, tau_index) = Current_Density(max_index, tau_index);
            end
         end
-        eff(thickness_index, tau_index) = max(Current_Density(:, tau_index) .* Voltage(:, tau_index)) / 1.00;
+        eff(thickness_index, tau_index) = max(Current_Density(:, tau_index) .* Voltage(:, tau_index)) / (trapz(New_Wavelength_Range, Spectrum) * 10 ^ 3 * 10 ^ -4) * 100;
 
         % units: mA / cm ^ 2
         AugerComponent(thickness_index, tau_index) = electron_charge * L * 10 ^ 3 * 10 ^ -7 * Material_C * Material_ni ^ 3 * ...
@@ -346,7 +346,7 @@ for thickness_index = 1:length(L_Range)
         saveas(gcf, strcat(L_Interest_Directory, "JV Curve, ", num2str(L), " nm.jpg"));
         close;
         writematrix([Voltage Current_Density], strcat(L_Interest_Directory, ...
-            "JV Data at, ", num2str(L), " nm.txt"), 'Delimiter', 'tab');
+            "JV Data, ", num2str(L), " nm.txt"), 'Delimiter', 'tab');
     end
 
     % Generate spectral dependence of the luminescent emission rate (Figure 4)
