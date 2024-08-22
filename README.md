@@ -1,5 +1,5 @@
 # Efficiency Limit of Solar Cells
-This repository contains MATLAB code to calculate the fundamental performance limits of single-junction solar cells with a realistic analysis based on the Tiedje-Yablonovitch model and including defect-assisted Shockley-Read-Hall (SRH) recombination. It calculates current density-voltage (J-V) characteristics and key photovoltaic parameters: open-circuit voltage (V<sub>oc</sub>), short-circuit current (J<sub>sc</sub>), fill factor (FF), and power conversion efficiency (eff). The MATLAB code also allows for visual representation of these parameters through plots to better understand the efficiency trends with varying thicknesses. While our work focuses on the efficiency limits of multilayer MoS<sub>2</sub>, MoSe<sub>2</sub>, WS<sub>2</sub>, and WSe<sub>2</sub> solar cells under AM 1.5 G illumination, this code can be applied to calculate the efficiency limits of any material under any spectrum.
+This repository contains MATLAB code to calculate the fundamental performance limits of single-junction solar cells with a realistic analysis based on the Tiedje-Yablonovitch model and including defect-assisted Shockley-Read-Hall (SRH) recombination. It calculates current density-voltage (J-V) characteristics and key photovoltaic parameters: short-circuit current (J<sub>sc</sub>), open-circuit voltage (V<sub>oc</sub>), fill factor (FF), and power conversion efficiency (eff). The MATLAB code also allows for visual representation of these parameters through plots to better understand the efficiency trends with varying thicknesses. While our work focuses on the efficiency limits of multilayer MoS<sub>2</sub>, MoSe<sub>2</sub>, WS<sub>2</sub>, and WSe<sub>2</sub> solar cells under AM 1.5 G illumination, this code can be applied to calculate the efficiency limits of any material under any spectrum.
 
 This README serves two purposes:
 1. It provides an overview of the MATLAB code we employed to produce the results presented in our paper.
@@ -16,7 +16,7 @@ All of the data needed to reproduce the results in our paper is in this reposito
   - Range of thicknesses defined in Line 103. Thickness(es) to generate J-V curves for are defined in Line 104 (note: make sure that the thicknesses are in ascending order, and are in the range of thicknesses).
 
 1. Efficiency Limits via Shockley-Queisser (SQ) Model
-  - Generates J-V characteristics and calculates V<sub>oc</sub>, J<sub>sc</sub>, FF, and eff using the SQ model.
+  - Generates J-V characteristics and calculates J<sub>sc</sub>, V<sub>oc</sub>, FF, and eff using the SQ model.
 
 2. Efficiency Limits via Extended Tiedje-Yablonovitch (TY) Model
   - Uses Equation 11 from Supplementary Note 1 (extended TY model) to generate J-V characteristics and calculate V<sub>oc</sub>, J<sub>sc</sub>, FF, and eff for a range of thicknesses.
@@ -43,4 +43,4 @@ We hope this code will be useful for calculating the efficiency limits under oth
   - See the note above for the k data. The spectrum should also be defined for all **wavelengths** rather than energy, and if it's defined for energy, Planck's equation should be used to convert energy into wavelength.
 
 ## Citing Our Work
-If you find this model useful for your research, please cite our paper: Nassiri Nazif, K., Nitta, F. U., Daus, A., Saraswat, K. C., & Pop, E. (2023). Efficiency limit of transition metal dichalcogenide solar cells. Communications Physics, 6(1), 367.
+If you find this model useful for your research, please cite our paper: Nassiri Nazif, K., Nitta, F. U., Daus, A., Saraswat, K. C., & Pop, E. (2023). Efficiency limit of transition metal dichalcogenide solar cells. _Communications Physics, 6_(1), 367.
