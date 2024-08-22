@@ -26,7 +26,7 @@ T = 300; % units: K
 % coefficient).
 
 % Define main directory and data output directories
-Main_Directory = "/Users/frederick.nitta/Desktop/solar-cell-efficiency-limit/";
+Main_Directory = "/Users/frederick.nitta/Desktop/Github/solar-cell-efficiency-limit/";
 [~, ~, ~] = mkdir("Figures (.fig)");
 Figures_fig_Directory = "Figures (.fig)/";
 [~, ~, ~] = mkdir("Figures (.jpg)");
